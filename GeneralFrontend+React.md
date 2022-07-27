@@ -539,7 +539,7 @@ A **task *(or macrotask)*** is any JavaScript code scheduled to be run by the st
 
 <br>
 
-When executing tasks from the **task queue**, the runtime executes each task that is in the queue at the moment a new iteration of the event loop begins. Tasks added to the queue after the iteration begins will not run until the next iteration.<br>
+When executing tasks from the **task queue**, the runtime executes each task that is in the queue at the moment a new iteration of the [event loop](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html) begins. Tasks added to the queue after the iteration begins will not run until the next iteration.<br>
 **Each time a task exits, and the execution context stack is empty, each microtask in the microtask queue is executed**, one after another. The difference is that **execution of microtasks continues until the queue is empty, even if new ones are scheduled** in the meantime. In other words, microtasks can enqueue new microtasks and those new microtasks will execute before the next task begins to run, and before the end of the current event loop iteration.
 **The application environment is basically the same *(no mouse coordinate changes, no new network data, etc)* between microtasks**.
 <br>
