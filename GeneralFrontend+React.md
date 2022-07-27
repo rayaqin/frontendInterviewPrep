@@ -2,8 +2,6 @@
 
 - [FE-info](#fe-info)
   - [**Function generators in JS**](#function-generators-in-js)
-    - [**Instance methods**](#instance-methods)
-    - [**Iteration protocols**](#iteration-protocols)
   - [**Higher order component in React**](#higher-order-component-in-react)
   - [**Higher order function**](#higher-order-function)
   - [**Async keyword**](#async-keyword)
@@ -12,11 +10,11 @@
   - [**React hooks in loops and conditions**](#react-hooks-in-loops-and-conditions)
   - [**Redux middlewares saga and thunk**](#redux-middlewares-saga-and-thunk)
   - [**Acronyms of best practices, clean code**](#acronyms-of-best-practices-clean-code)
-  - [**Design patterns**](#design-patterns)
-    - [1. Constructor Pattern <br>](#1-constructor-pattern-)
-    - [2. Module Pattern <br>](#2-module-pattern-)
-    - [3. Singleton Pattern <br>](#3-singleton-pattern-)
-    - [4. Observer Pattern <br>](#4-observer-pattern-)
+  - [**Some basic Design Patterns**](#some-basic-design-patterns)
+    - [Constructor Pattern <br>](#constructor-pattern-)
+    - [Module Pattern <br>](#module-pattern-)
+    - [Singleton Pattern <br>](#singleton-pattern-)
+    - [Observer Pattern <br>](#observer-pattern-)
   - [**React Fiber**](#react-fiber)
   - [**What is jank?**](#what-is-jank)
   - [**Real usecase for useMemo and useCallback**](#real-usecase-for-usememo-and-usecallback)
@@ -28,10 +26,8 @@
   - [**Notes on Redux reducers, actions, dispatch**](#notes-on-redux-reducers-actions-dispatch)
   - [**3 main principles of Redux**](#3-main-principles-of-redux)
   - [**React's Context API**](#reacts-context-api)
-    - [Additional info on Redux vs Context:](#additional-info-on-redux-vs-context)
   - [**Framework vs Library**](#framework-vs-library)
   - [**How does `window.requestAnimationFrame(callback)` work, and what is it for?**](#how-does-windowrequestanimationframecallback-work-and-what-is-it-for)
-    - [Old-school methods before requestAnimationFrame](#old-school-methods-before-requestanimationframe)
   - [**The Window object**](#the-window-object)
   - [**The History object**](#the-history-object)
   - [**3 Core Web Vitals**](#3-core-web-vitals)
@@ -47,7 +43,6 @@
   - [**stopPropagation/stopImmediatePropagation/preventDefault**](#stoppropagationstopimmediatepropagationpreventdefault)
   - [**.addEventListener()**](#addeventlistener)
   - [**useSelector hook**](#useselector-hook)
-    - [**The connect API is not recommended anymore**](#the-connect-api-is-not-recommended-anymore)
   - [**useDispatch hook**](#usedispatch-hook)
   - [**Render batching in react**](#render-batching-in-react)
   - [**Shadow DOM**](#shadow-dom)
@@ -85,21 +80,19 @@ console.log(gen.next().value); // 3
 ```
 <br>
 
-### **Instance methods**
+**Instance methods**<br>
 `Generator.prototype.next()`<br>
 Returns a value yielded by the yield expression.<br><br>
 `Generator.prototype.return()`<br>
 Returns the given value and finishes the generator.<br><br>
 `Generator.prototype.throw()`<br>
 Throws an error to a generator (also finishes the generator, unless caught from within that generator).
-
 <br>
+
 *Example: Redux Sagas are implemented as Generator functions that yield objects to the redux-saga middleware.*
-
-<br>
 <br>
 
-### **Iteration protocols**
+**Iteration protocols**<br>
 These protocols can be implemented by any object by following some conventions. These objects define or customize their iteration protocol in a way that allows their values to be looped over. **Array** and **Map** have default **build-in iteration behaviour**. In order to be iterable an object must implement the `@@iterator` method, meaning it must have a property with the `@@iterator` key (Symbol.interator). This is a zero argument function that returns an object. The returned `next()` method must return an object with `done` and `value` properties. 
 
 ```
@@ -253,21 +246,21 @@ SOLID
 <br>
 <br>
 
-## **Design patterns**
-### 1. Constructor Pattern <br>
+## **Some basic Design Patterns**
+### Constructor Pattern <br>
 When we think on the classic implementation of object oriented languages, a constructor is a special function that initializes the class’s values on default or with input from the caller.<br>
 *Note: In JS, `Object.Create` builds an object that inherits directly from the one passed as its first argument and does not execute the constructor. If you want the constructor to be executed use the `new` keyword.*
 <br>
 
-### 2. Module Pattern <br>
+### Module Pattern <br>
 Access rights to make sure everything only has access to things that it should be able to modify.
 <br>
 
-### 3. Singleton Pattern <br>
+### Singleton Pattern <br>
 When we want to allow a single instance of a class, we use the singleton pattern.
 <br>
 
-### 4. Observer Pattern <br>
+### Observer Pattern <br>
 An object named the **subject**, maintains a list of its dependents, called **observers**, and notifies them automatically of any state changes, usually by calling one of their methods. It is mainly used for implementing distributed event handling systems, in "event driven" software.
 
 <br>
@@ -419,16 +412,14 @@ Context is primarily used **when some data needs to be accessible by many compon
 If you only want to avoid passing some props through many levels, component composition is often a simpler solution than context.<br>
 It is **not for global state management**, though it can be used that way, it is not optimal to do so.
 <br>
-Further reading: https://reactjs.org/docs/context.html#when-to-use-context
-<br>
-<br>
 
-### Additional info on Redux vs Context:
+**Additional info on Redux vs Context:**<br>
 Redux can be used independently from React<br>
 Recommendation is to use *Redux* for complex **global state management** and *Context* for **prop drilling**.
 
 <br>
 
+Further reading: https://reactjs.org/docs/context.html#when-to-use-context <br>
 *Note: Redux is not the only state management tool available.*
 
 <br>
@@ -454,7 +445,7 @@ It returns a long integer value, the request id, that uniquely identifies the en
 
 It does not guarantee synchronicity of two animations.
 
-### Old-school methods before requestAnimationFrame
+**Old-school methods before requestAnimationFrame:** <br>
 `setTimeout` and `setInterval` <br>
 JavaScript timers continue to work even in background tabs, and even when the corresponding browser window is minimized. As a consequence, the browser will continue to run invisible animations, resulting in unnecessary CPU usage and wastage of battery life. This is especially bad in the case of mobile devices. <br>
 Additionally, timers set up this way always enqueue their callback functions after a given time, even if for some reason the execution of the callback function takes more time, and this may result in multiple callback functions running at the same time, which can choke up the browser or result in unexpected behaviour. <br>
@@ -808,7 +799,7 @@ With mapState, all individual fields were returned in a combined object. It didn
 
 <br>
 
-### **The connect API is not recommended anymore**
+**The connect API is not recommended anymore** <br>
 The existing `connect` API still works and will continue to be supported, but the hooks API is simpler and works better with TypeScript.
 
 <br>
