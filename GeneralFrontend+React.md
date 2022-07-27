@@ -13,6 +13,10 @@
   - [**Redux middlewares saga and thunk**](#redux-middlewares-saga-and-thunk)
   - [**Acronyms of best practices, clean code**](#acronyms-of-best-practices-clean-code)
   - [**Design patterns**](#design-patterns)
+    - [1. Constructor Pattern <br>](#1-constructor-pattern-)
+    - [2. Module Pattern <br>](#2-module-pattern-)
+    - [3. Singleton Pattern <br>](#3-singleton-pattern-)
+    - [4. Observer Pattern <br>](#4-observer-pattern-)
   - [**React Fiber**](#react-fiber)
   - [**What is jank?**](#what-is-jank)
   - [**Real usecase for useMemo and useCallback**](#real-usecase-for-usememo-and-usecallback)
@@ -120,7 +124,7 @@ A higher-order component is **a function that takes a component as parameter and
 
 <br>
 
-**Example: Redux connect**:<br>
+**Example: Redux connect**<br>
 The `connect()` function connects a React component to a Redux store *(kinda deprecated though)*.<br>
 It provides its connected component with the pieces of the data it needs from the store, and the functions it can use to dispatch actions to the store.
 It does not modify the component class passed to it; instead, it **returns a new, connected component class that wraps the component you passed in**.
@@ -250,17 +254,20 @@ SOLID
 <br>
 
 ## **Design patterns**
-*1. Constructor Pattern* <br>
+### 1. Constructor Pattern <br>
 When we think on the classic implementation of object oriented languages, a constructor is a special function that initializes the class’s values on default or with input from the caller.<br>
 *Note: In JS, `Object.Create` builds an object that inherits directly from the one passed as its first argument and does not execute the constructor. If you want the constructor to be executed use the `new` keyword.*
-<br><br>
-*2. Module Pattern* <br>
+<br>
+
+### 2. Module Pattern <br>
 Access rights to make sure everything only has access to things that it should be able to modify.
-<br><br>
-*4. Singleton Pattern* <br>
+<br>
+
+### 3. Singleton Pattern <br>
 When we want to allow a single instance of a class, we use the singleton pattern.
-<br><br>
-*5. Observer Pattern* <br>
+<br>
+
+### 4. Observer Pattern <br>
 An object named the **subject**, maintains a list of its dependents, called **observers**, and notifies them automatically of any state changes, usually by calling one of their methods. It is mainly used for implementing distributed event handling systems, in "event driven" software.
 
 <br>
@@ -315,7 +322,7 @@ In reality, however, the browser has housekeeping to do, so all your work must c
 <br>
 
 ## **Real usecase for useMemo and useCallback**
-- useMemo is used to memoize and **skip recalculation**. It is useful when you don't want to recalculate heavy calculations each time a component renders (usecase: when sorting or filtering large amounts of data)
+- useMemo is used to memoize and **skip recalculation**. It is useful when you don't want to recalculate heavy calculations each time a component renders *(usecase: when sorting or filtering large amounts of data)*
 - useCallback is used to **avoid recreating/redefining methods at every render** *(when a function is being passed down to a React child component, and we want to prevent unnecessary rerender of the child, or when a function would be called repeatedly with the same params in a useEffect)*
 
 - use eslint-plugin-react-hook to receive warnings about this
@@ -324,8 +331,8 @@ In reality, however, the browser has housekeeping to do, so all your work must c
 <br>
 
 ## **FirstClassFunction**
-A programming language is said to have First-class functions when functions in that language are treated like any other variable. For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable.
-Pretty much all functional languages (like Haskell), and Perl, Python, PHP, Lua, Tcl/Tk, JavaScript have first class functions.
+A programming language is said to have First-class functions when **functions** in that language **are treated like any other variable**. For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable.
+Pretty much all functional languages *(like Haskell)*, and Perl, Python, PHP, Lua, Tcl/Tk, **JavaScript** have first class functions.
 
 
 <br>
@@ -428,10 +435,10 @@ Recommendation is to use *Redux* for complex **global state management** and *Co
 <br>
 
 ## **Framework vs Library**
-Frameworks and libraries are both code written by someone else that helps you perform some common tasks in a less verbose way.
-Generally frameworks are more opinionated, and limit what you can do and how you can do it, but provide more assistance and leave less to the developer, while the developer can decide when and how to use a library.
-- A library is essentially a set of functions, classes and types. Each time you call a function of the library, it does some work and returns control to the client.
-- A framework embodies some abstract design, with more behavior built in. In order to use it you need to insert your behavior into various places in the framework either by subclassing or by plugging in your own classes. The framework's code then calls your code at these points.
+Frameworks and libraries are **both** code written by someone else that **help**s **you perform some common tasks in a less verbose way**.
+Generally **frameworks are more opinionated**, and limit what you can do and how you can do it, but provide more assistance and leave less to the developer, while the developer can decide when and how to use a library.
+- A library is essentially a set of functions, classes and types. Each time you call a function of the library, it does some work and **returns control to the client**.
+- A framework embodies some abstract design, with **more behavior built in**. In order to use it you need to insert your behavior into various places in the framework either by subclassing or by plugging in your own classes. The framework's code then **calls your code** at these points.
 
 <br>
 <br>
@@ -531,7 +538,7 @@ Anything below 0.1 is a ‘Good’ score.
 - Including size attributes for images and videos
 - Using CSS aspect ratio boxes for the given space
 - Avoid overlapping content over existing content
-- Avoid changing `height, width, top, right, bottom, left` properties, instead use `transform: scale()` and `transform: translate()`
+- Avoid changing `height`, `width`, `top`, `right`, `bottom`, `left` properties, instead use `transform: scale()` and `transform: translate()`
 
 <br>
 <br>
@@ -543,7 +550,7 @@ A **task *(or macrotask)*** is any JavaScript code scheduled to be run by the st
 
 When executing tasks from the **task queue**, the runtime executes each task that is in the queue at the moment a new iteration of the event loop begins. Tasks added to the queue after the iteration begins will not run until the next iteration.<br>
 **Each time a task exits, and the execution context stack is empty, each microtask in the microtask queue is executed**, one after another. The difference is that **execution of microtasks continues until the queue is empty, even if new ones are scheduled** in the meantime. In other words, microtasks can enqueue new microtasks and those new microtasks will execute before the next task begins to run, and before the end of the current event loop iteration.
-**The application environment is basically the same (no mouse coordinate changes, no new network data, etc) between microtasks**.
+**The application environment is basically the same *(no mouse coordinate changes, no new network data, etc)* between microtasks**.
 <br>
 <br>
 
