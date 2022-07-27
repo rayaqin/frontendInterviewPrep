@@ -1,4 +1,8 @@
 # FE-info
+
+- TOC
+{:toc}
+
 ## **Function generators in JS**
 The function* declaration defines a generator function, which **returns a Generator object**. This object cannot be instantiated directly, a Generator instance can only be returned from a generator function. **Generators are functions that can be exited and later re-entered**. Their context (variable bindings) will be saved across re-entrances. **Calling a generator function does not execute its body immediately; an iterator object for the function is returned instead**.
 When the iterator's `next()` method is called, the generator function's body is executed until the first `yield` expression, which specifies the value to be returned from the iterator.
@@ -17,8 +21,6 @@ console.log(gen.next().value); // 1
 console.log(gen.next().value); // 2
 console.log(gen.next().value); // 3
 ```
-
-<br>
 <br>
 
 ### **Instance methods**
