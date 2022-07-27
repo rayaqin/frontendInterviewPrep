@@ -1,6 +1,6 @@
-# FE-info
+# General Frontend knowledge + React
 
-- [FE-info](#fe-info)
+- [General Frontend knowledge + React](#general-frontend-knowledge--react)
   - [**Function generators in JS**](#function-generators-in-js)
   - [**Higher order component in React**](#higher-order-component-in-react)
   - [**Higher order function**](#higher-order-function)
