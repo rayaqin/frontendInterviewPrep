@@ -132,7 +132,7 @@ For example:
 const isEven = (x) => (x%2 ===0);
 [1,2,3,4,5].filter(isEven);
 ```
-*(In this example `Array.filter()` is the higher order function, that receives the `isEven` function as a parameter)*
+*(In this example `Array.filter()` is a higher order function, since it receives the `isEven` function as a parameter)*
 
 <br>
 <br>
