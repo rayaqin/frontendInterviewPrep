@@ -1106,7 +1106,7 @@ Only use it **when you have a slow user interface**, especially **on older devic
 <br>
 
 ## **What is a headless CMS?**
-It makes content accessible via an API for display on any device without a built-in, front-end or presentation layer. The term “headless” comes from the concept of chopping the “head” *(the front end)* off the “body” *(the back end)*.
+It makes content accessible via an API for display on any device without a built-in front-end or presentation layer. The term “headless” comes from the concept of chopping the “head” *(the front end)* off the “body” *(the back end)*.
 
 <br>
 <br>
