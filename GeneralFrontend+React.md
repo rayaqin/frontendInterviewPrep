@@ -59,6 +59,7 @@
   - [**useLayoutEffect()**](#uselayouteffect)
   - [**useDeferredValue()**](#usedeferredvalue)
   - [**useTransition()**](#usetransition)
+  - [**What is a headless CMS?**](#what-is-a-headless-cms)
 
 ## **Function generators in JS**
 The function* declaration defines a generator function, which **returns a Generator object**. This object cannot be instantiated directly, a Generator instance can only be returned from a generator function. **Generators are functions that can be exited and later re-entered**. Their context (variable bindings) will be saved across re-entrances. **Calling a generator function does not execute its body immediately; an iterator object for the function is returned instead**.
@@ -1100,6 +1101,12 @@ The `setFilterTerm()` state updating function is **wrapped by `startTransition()
 <br>
 
 Only use it **when you have a slow user interface**, especially **on older devices**, or in a situation where you have no other solution to use. This is because it takes up extra performance.
+
+<br>
+<br>
+
+## **What is a headless CMS?**
+It makes content accessible via an API for display on any device without a built-in, front-end or presentation layer. The term “headless” comes from the concept of chopping the “head” *(the front end)* off the “body” *(the back end)*.
 
 <br>
 <br>
