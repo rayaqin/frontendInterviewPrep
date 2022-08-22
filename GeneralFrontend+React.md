@@ -60,6 +60,8 @@
   - [**useDeferredValue()**](#usedeferredvalue)
   - [**useTransition()**](#usetransition)
   - [**What is a headless CMS?**](#what-is-a-headless-cms)
+    - [**GET vs POST regarding security**](#get-vs-post-regarding-security)
+    - [**What is serverless computing?**](#what-is-serverless-computing)
 
 ## **Function generators in JS**
 The function* declaration defines a generator function, which **returns a Generator object**. This object cannot be instantiated directly, a Generator instance can only be returned from a generator function. **Generators are functions that can be exited and later re-entered**. Their context (variable bindings) will be saved across re-entrances. **Calling a generator function does not execute its body immediately; an iterator object for the function is returned instead**.
@@ -1107,6 +1109,22 @@ Only use it **when you have a slow user interface**, especially **on older devic
 
 ## **What is a headless CMS?**
 It makes content accessible via an API for display on any device without a built-in front-end or presentation layer. The term “headless” comes from the concept of chopping the “head” *(the front end)* off the “body” *(the back end)*.
+
+<br>
+<br>
+
+### **GET vs POST regarding security**
+GET parameters are passed via URL. This means that parameters are stored in server logs, and browser history. When using GET, it makes it very easy to alter the data being submitted the the server as well, as it is right there in the address bar to play with.
+
+The problem when comparing security between the two is that POST may deter the casual user, but will do nothing to stop someone with malicious intent. It is very easy to fake POST requests, and shouldn't be trusted outright.
+
+The biggest security issue with GET is not malicious intent of the end-user, but by a third party sending a link to the end-user. I cannot email you a link that will force a POST request, but I most certainly can send you a link with a malicious GET request.
+
+<br>
+<br>
+
+### **What is serverless computing?**
+Serverless computing is a cloud computing execution model in which the **cloud provider allocates machine resources on demand**, taking care of the servers on behalf of their customers. It allows developers to build and run applications without having to manage servers. "Serverless" is a misnomer in the sense that **servers are still used** by cloud service providers to execute code for developers.
 
 <br>
 <br>
